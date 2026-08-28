@@ -42,3 +42,80 @@
 #include <iostream>
 using namespace std;
 
+const int MAX_SIZE = 1000;
+
+double calculateSum(const double numbers[], int size) {
+    double total = 0;
+
+    for (int i = 0; i < size; i++) {
+        total += numbers[i];
+    }
+
+    return total;
+}
+
+double calculateAverage(const double numbers[], int size) {
+    double total = 0;
+
+    for (int i = 0; i < size; i++) {
+        total += numbers[i];
+    }
+
+    return total / size;
+}
+
+double findMaximum(const double numbers[], int size) {
+    double maximum = numbers[0];
+
+    for (int i = 1; i < size; i++) {
+        if (numbers[i] > maximum) {
+            maximum = numbers[i];
+        }
+    }
+
+    return maximum;
+}
+
+double findMinimum(const double numbers[], int size) {
+    double minimum = numbers[0];
+
+    for (int i = 1; i < size; i++) {
+        if (numbers[i] < minimum) {
+            minimum = numbers[i];
+        }
+    }
+
+    return minimum;
+}
+
+int main() {
+    int size;
+    double numbers[MAX_SIZE];
+
+    cout << "How many numbers? ";
+    if (!(cin >> size) || size <= 0) {
+        cout << "Error: The number of values must be a positive integer." << endl;
+        return 0;
+    }
+
+    if (size > MAX_SIZE) {
+        cout << "Error: You can enter at most " << MAX_SIZE << " numbers." << endl;
+        return 0;
+    }
+
+    for (int i = 0; i < size; i++) {
+        cout << "Enter number " << i + 1 << ": ";
+        if (!(cin >> numbers[i])) {
+            cout << "Error: Please enter valid numbers only." << endl;
+            return 0;
+        }
+    }
+
+    cout << "\nResults:" << endl;
+    cout << "Sum:     " << calculateSum(numbers, size) << endl;
+    cout << "Average: " << calculateAverage(numbers, size) << endl;
+    cout << "Maximum: " << findMaximum(numbers, size) << endl;
+    cout << "Minimum: " << findMinimum(numbers, size) << endl;
+
+    return 0;
+}
